@@ -314,7 +314,7 @@
       <li><a href="#">About</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="btn-ghost" onclick="openModal('loginModal')">Sign in</button>
+      <a class="btn-ghost" href="{{ url('signup') }}">Sign in</a>
       <button class="btn-solid" onclick="openModal('signupModal')">Get started</button>
     </div>
     <button class="hamburger" onclick="toggleMenu()" id="hamburger">
