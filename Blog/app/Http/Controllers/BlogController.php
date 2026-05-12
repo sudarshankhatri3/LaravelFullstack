@@ -21,7 +21,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('readBlog');
     }
 
     /**
@@ -30,8 +30,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $validated=$request->validate([
-            'title'=>'require|max:100',
-            'content'=>'require|max:50000'
+            'title'=>'required|max:100',
+            'content'=>'required|max:50000'
         ]);
 
         Blog::create($validated);
@@ -68,6 +68,9 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $blogs=Blog::findOrFail($id);
+        $blogs->delete();
+
+        return redirect('readBlog')->with('sucess','Data deleted destroyed');
     }
 }

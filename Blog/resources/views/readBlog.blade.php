@@ -155,27 +155,8 @@ footer {
         <div class="card">
             <h3>{{$blog->title}}</h3>
             <p>{{$blog->content}}</p>
-            <a href="#" class="read-btn">Read More</a>
         </div>
         @endforeach
-
-        <!-- BLOG CARD 2 -->
-        <div class="card">
-            <h3>Understanding MVC Architecture</h3>
-            <p>
-                MVC helps separate logic, views, and data for better code structure...
-            </p>
-            <a href="#" class="read-btn">Read More</a>
-        </div>
-
-        <!-- BLOG CARD 3 -->
-        <div class="card">
-            <h3>JavaScript Basics for Beginners</h3>
-            <p>
-                JavaScript is essential for frontend development and interactivity...
-            </p>
-            <a href="#" class="read-btn">Read More</a>
-        </div>
 
     </div>
 
