@@ -7,6 +7,6 @@ Route::get('/', function () {
 });
 
 
-Route::post('/register',function(){
-    return route('signup');
+Route::get('/register',function(){
+    return view('signup');
 });
