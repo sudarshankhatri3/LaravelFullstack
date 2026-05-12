@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use Illuminate\Foundation\Auth\User as AuthUser;
+use App\Models\Blog;
 
-class RegisterController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $blogs=Blog::orderBy('id','DESC')->get();
+        return view('readBlog',compact('blogs'));
     }
 
     /**
@@ -31,18 +30,13 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $validated=$request->validate([
-            'first_name'=>'required|max:50',
-            'last_name'=>'required|max:50',
-            'email'=>'required|email',
-            'role'=>'required',
-            'password'=>'required'
+            'title'=>'require|max:100',
+            'content'=>'require|max:50000'
         ]);
 
-        $validated['password']=Hash::make($validated['password']);
+        Blog::create($validated);
+        return redirect('readBlog')->with('sucess','Blog added sucessfully');
 
-        User::create($validated);
-
-        // return redirect('/register')->with('Sucess','Register created sucessfully');
     }
 
     /**
