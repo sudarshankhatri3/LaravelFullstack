@@ -8,5 +8,5 @@ Route::get('/', function () {
 
 
 Route::get('/register',function(){
-    return view('signup');
+    return view('register');
 });
