@@ -36,12 +36,12 @@ class OrdersController extends Controller
         $validated=$request->validate([
             'product_id'=>'required|exists:products,id',
             'quantity'=>'required|integer|min:1',
-            'status'=>'required|in:shipped,delivered,pending'
+            // 'status'=>'required|in:shipped,delivered,pending'
         ]);
 
         $product=Product::findOrFail($validated['product_id']);
 
-        if($product->stock<$validated['quantity']){
+        if($product->quantity<$validated['quantity']){
             return back()->with('error','Not enough product in stock');
         }
         $total_amount=$validated['quantity']*$product->price;
@@ -59,7 +59,7 @@ class OrdersController extends Controller
                 'total_amount'=>$total_amount,
                 'status'=>'pending'
             ]);
-            $product->decrement('stock', $validated['quantity']);
+            $product->decrement('quantity', $validated['quantity']);
         });
         return redirect('/customer/orderList')->with(['Sucess'=>'Order placed sucessfully']);
     }

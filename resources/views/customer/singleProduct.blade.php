@@ -405,7 +405,7 @@ PRODUCT SECTION
                                 </label>
 
                                 <input type="number" name="quantity" value="1" min="1"
-                                    max="{{ $prds->stock }}" disabled>
+                                    max="{{ $prds->stock }}">
 
                             </div>
 
