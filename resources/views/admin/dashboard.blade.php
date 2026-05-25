@@ -551,13 +551,13 @@
                 <a href="#" class="nav-item" id="order-item" onclick="insertOrder()">
                     <i class="fas fa-shopping-cart"></i> Orders
                 </a>
-                <a href="#" class="nav-item" id="customer-item">
+                <a href="#" class="nav-item" id="customer-item" onclick="customerDetails()">
                     <i class="fas fa-users"></i> Customers
                 </a>
-                <a href="#" class="nav-item" id="product-item">
+                <a href="#" class="nav-item" id="product-item" onclick="productAnalysis()">
                     <i class="fas fa-box"></i> Products
                 </a>
-                <a href="#" class="nav-item" id="report-item">
+                <a href="#" class="nav-item" id="report-item" onclick="reportAnalysis()">
                     <i class="fas fa-chart-line"></i> Reports
                 </a>
             </nav>
@@ -707,10 +707,169 @@
                        <td>Delivered</td>                        
                        <td>Rs. 2,500</td>                    </tr>                </tbody>            </table>        </div>        `;   
                        
-                       }</script>
+                       }
 
 
+        function customerDetails() {
 
+            let mainContent = document.getElementById('main-content');        
+            mainContent.innerHTML = `
+            
+                <div class="top-bar">           
+                    <h1 class="page-title">                
+                        <i class="fas fa-shopping-cart"></i> Orders
+                    </h1>
+                </div>
 
+                <div class="table-container">            
+                    <table>               
+                        <thead>                    
+                            <tr>                        
+                                <th>Order ID</th>                       
+                                <th>Customer</th>                       
+                                <th>Product</th>                        
+                                <th>Status</th>                        
+                                <th>Total</th> 
+                                <th>Action</th>                   
+                            </tr>                
+                        </thead>
+
+                        <tbody>                   
+                            <tr>                        
+                                <td>#1001</td>                       
+                                <td>Ram Sharma</td>                       
+                                <td>Laptop</td>                        
+                                <td>Pending</td>                      
+                                <td>Rs. 45,000</td>
+                                <td>
+                                    <button>View</button>
+                                </td>                   
+                            </tr>                    
+
+                            <tr>                       
+                                <td>#1002</td>                        
+                                <td>Hari Karki</td>                        
+                                <td>Mouse</td>                        
+                                <td>Delivered</td>                        
+                                <td>Rs. 2,500</td>
+
+                                <td>
+                                    <button>View</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            `;
+        }
+
+        function productAnalysis(){
+            let mainContent = document.getElementById('main-content');        
+            mainContent.innerHTML =`
+    
+            <div class="top-bar">           
+                <h1 class="page-title">                
+                    <i class="fas fa-shopping-cart"></i> Orders
+                </h1>
+            </div>
+
+            <div class="table-container">            
+                <table>               
+                    <thead>                    
+                        <tr>                        
+                            <th>Order ID</th>                       
+                            <th>Customer</th>                       
+                            <th>Product</th>                        
+                            <th>Status</th>                        
+                            <th>Total</th> 
+                            <th>Action</th>                   
+                        </tr>                
+                    </thead>
+
+                    <tbody>                   
+                        <tr>                        
+                            <td>#1001</td>                       
+                            <td>Ram Sharma</td>                       
+                            <td>Laptop</td>                        
+                            <td>Pending</td>                      
+                            <td>Rs. 45,000</td>
+                            <td>
+                                <button>View</button>
+                            </td>                   
+                        </tr>                    
+
+                        <tr>                       
+                            <td>#1002</td>                        
+                            <td>Hari Karki</td>                        
+                            <td>Mouse</td>                        
+                            <td>Delivered</td>                        
+                            <td>Rs. 2,500</td>
+
+                            <td>
+                                <button>View</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            `;
+        }
+        function reportAnalysis(){
+            let mainContent = document.getElementById('main-content');        
+            mainContent.innerHTML =`
+                <div class="top-bar">           
+                    <h1 class="page-title">                
+                        <i class="fas fa-shopping-cart"></i> Orders
+                    </h1>
+                </div>
+
+                <div class="table-container">            
+                    <table>               
+                        <thead>                    
+                            <tr>                        
+                                <th>Order ID</th>                       
+                                <th>Customer</th>                       
+                                <th>Product</th>                        
+                                <th>Status</th>                        
+                                <th>Total</th> 
+                                <th>Action</th>                   
+                            </tr>                
+                        </thead>
+
+                        <tbody>                   
+                            <tr>                        
+                                <td>#1001</td>                       
+                                <td>Ram Sharma</td>                       
+                                <td>Laptop</td>                        
+                                <td>Pending</td>                      
+                                <td>Rs. 45,000</td>
+                                <td>
+                                    <button>View</button>
+                                </td>                   
+                            </tr>                    
+
+                            <tr>                       
+                                <td>#1002</td>                        
+                                <td>Hari Karki</td>                        
+                                <td>Mouse</td>                        
+                                <td>Delivered</td>                        
+                                <td>Rs. 2,500</td>
+
+                                <td>
+                                    <button>View</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                `;
+        }            
+    </script>
 </body>
 </html>
