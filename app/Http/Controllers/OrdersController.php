@@ -35,10 +35,7 @@ class OrdersController extends Controller
     {
         $validated=$request->validate([
             'product_id'=>'required|exists:products,id',
-            'title'=>'required|min:4|max:255',
-            'image'=>'required|mimes:jpeg,png,jpg,gif',
             'quantity'=>'required|integer|min:1',
-            'unit_price'=>'required|numeric', 
             'status'=>'required|in:shipped,delivered,pending'
         ]);
 
@@ -63,9 +60,8 @@ class OrdersController extends Controller
                 'status'=>'pending'
             ]);
             $product->decrement('stock', $validated['quantity']);
-
-            return redirect('/customer/orderList')->with(['Sucess'=>'Order placed sucessfully']);
         });
+        return redirect('/customer/orderList')->with(['Sucess'=>'Order placed sucessfully']);
     }
 
     /**

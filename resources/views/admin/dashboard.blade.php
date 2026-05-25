@@ -545,19 +545,19 @@
                 <a href="#" class="nav-item">
                     <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
-                <a href="#" class="nav-item active">
+                <a href="javascript:void(0)" class="nav-item active">
                     <i class="fas fa-envelope"></i> Inquiries
                 </a>
-                <a href="#" class="nav-item" id="order-item" onclick="insertOrder()">
+                <a href="javascript:void(0)" class="nav-item" id="order-item" onclick="insertOrder()">
                     <i class="fas fa-shopping-cart"></i> Orders
                 </a>
-                <a href="#" class="nav-item" id="customer-item" onclick="customerDetails()">
+                <a href="javascript:void(0)" class="nav-item" id="customer-item" onclick="customerDetails()">
                     <i class="fas fa-users"></i> Customers
                 </a>
-                <a href="#" class="nav-item" id="product-item" onclick="productAnalysis()">
+                <a href="javascript:void(0)" class="nav-item" id="product-item" onclick="productAnalysis()">
                     <i class="fas fa-box"></i> Products
                 </a>
-                <a href="#" class="nav-item" id="report-item" onclick="reportAnalysis()">
+                <a href="javascript:void(0)" class="nav-item" id="report-item" onclick="reportAnalysis()">
                     <i class="fas fa-chart-line"></i> Reports
                 </a>
             </nav>
@@ -754,7 +754,7 @@
                                 <td>Rs. 2,500</td>
 
                                 <td>
-                                    <button>View</button>
+                                    <button>Customer</button>
                                 </td>
                             </tr>
 
@@ -808,7 +808,7 @@
                             <td>Rs. 2,500</td>
 
                             <td>
-                                <button>View</button>
+                                <button>Product</button>
                             </td>
                         </tr>
 
@@ -860,7 +860,7 @@
                                 <td>Rs. 2,500</td>
 
                                 <td>
-                                    <button>View</button>
+                                    <button>Report</button>
                                 </td>
                             </tr>
 
