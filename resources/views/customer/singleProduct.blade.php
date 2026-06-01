@@ -378,52 +378,7 @@ PRODUCT SECTION
 
                     </div>
 
-                    <!-- BUTTONS -->
-
-                    <div class="buttons">
-
-                        <a href="{{ url('customer/addCartList') }}" class="cart-btn">
-
-                            <i class="fas fa-cart-plus"></i>
-
-                            Add To Cart
-
-                        </a>
-
-                        <form action="{{ url('/customer/orderList') }}" method="POST">
-
-                            @csrf
-
-                            <!-- Product ID -->
-                            <input type="hidden" name="product_id" value="{{ $prds->id }}" required>
-
-                            <!-- Product Quantity -->
-                            <div class="quantity-box">
-
-                                <label>
-                                    Quantity
-                                </label>
-
-                                <input type="number" name="quantity" value="1" min="1"
-                                    max="{{ $prds->stock }}">
-
-                            </div>
-
-                            <!-- Submit Button -->
-                            <button type="submit" class="buy-btn" {{ $prds->stock == 0 ? 'disabled' : '' }}>
-
-                                @if ($prds->stock == 0)
-                                    Out Of Stock
-                                @else
-                                    Buy Now
-                                @endif
-
-                            </button>
-
-                        </form>
-
-                    </div>
-
+                    
                 </div>
 
             </div>

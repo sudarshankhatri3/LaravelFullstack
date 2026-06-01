@@ -48,7 +48,7 @@ Route::post('/common/sendLink',[ForgetPasswordLinkController::class,'store']);
 Route::middleware(['auth', 'admin'])->group(function () {
     // // Add active user to admin panel
     Route::get('/admin/dashboard',[DashboardController::class,'create']);
-    Route::get('/admin/dashboard',[InquiryController::class,'index']);
+
     //View category
     Route::get('/admin/viewCategory',[CategoryController::class,'index']);
 
@@ -62,7 +62,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/manageProduct',[DashboardController::class,'handleProduct']);
 
     // manage the inquiry
-    Route::delete('/admin/dashboard/{$id}',[InquiryController::class,'destory']);
+    Route::get('/admin/dashboard',[InquiryController::class,'index']);
+    Route::patch('/admin/dashboard/{id}',[InquiryController::class,'processing']);
+    Route::patch('/admin/dashboard/{id}',[InquiryController::class,'resolved']);
+
+   
     
 
     // Route::post('/vendor/category',[CategoryController::class,'store']);

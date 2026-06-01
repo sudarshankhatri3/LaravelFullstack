@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inquiry;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class InquiryController extends Controller
 {
@@ -13,6 +15,8 @@ class InquiryController extends Controller
     public function index()
     {
         $inquiry=Inquiry::orderBy('id')->get();
+
+        $ord=Order::orderBy('id')->get();
         
         // count the total inquiry
         $total=$inquiry->count();
@@ -21,7 +25,7 @@ class InquiryController extends Controller
         $processing=Inquiry::where('status','processing')->count();
         $resolved=Inquiry::where('status','processing')->count();
 
-        return view('/admin/dashboard',compact('inquiry','total','pending','processing','resolved'));
+        return view('/admin/dashboard',compact('inquiry','ord','total','pending','processing','resolved'));
     }
     /**
      * Show the form for creating a new resource.
@@ -53,7 +57,7 @@ class InquiryController extends Controller
         
         $imagePath=$request->file('screenshot')->store('inquiry','public');
 
-        $order=Order::findOrFail($validated(order_id));
+        $order=Order::findOrFail($validated($validated['order_id']));
         if($order->id){
             Inquiry::create([
                 'user_id'=>Auth::id(),
@@ -77,7 +81,7 @@ class InquiryController extends Controller
      * update the state of inquiry
      */
    
-    public function processing($id){
+    public function processing(Request $request,$id){
         $inquiryProcess=Inquiry::findOrFail($id);
 
 
@@ -93,7 +97,7 @@ class InquiryController extends Controller
      * update the state of inquiry to resolved state
      */
 
-    public function resolveD($id){
+    public function resolved($id){
         $inqResolve=Inquiry::findOrFail($id);
 
         $inqResolve::update([

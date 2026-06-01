@@ -626,16 +626,45 @@
                     @foreach($inquiry as $inq)
                     <tbody id="inquiriesTableBody">
                         <!-- Dynamic content -->
-                         <td>{{$inq->id}}</td>
+                         <td>#100{{$inq->id}}</td>
                          <td>{{$inq->users->name}}</td>
-                         <td>{{$inq->order_id}}</td>
+                         <td>#100{{$inq->order_id}}</td>
                          <td>{{$inq->message}}</td>
                          <td>{{$inq->status}}</td>
                          <td>{{$inq->created_at}}</td>
                          <td>
-                            <button>Process</button>
-                            <button>Resolve</button>
+                            @if($inquiry->status === 'pending')
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            @elseif($inquiry->status === 'processing')
+                                <span class="badge bg-primary">Processing</span>
+                            @else
+                                <span class="badge bg-success">Resolved</span>
+                            @endif
                          </td>
+                         <td>
+                            @if($inquiry->status === 'pending')
+                                <form action="{{url('/admin/dashboard/',$inquiry->id) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="processing">
+                                    <button type="submit" class="btn btn-sm btn-outline-primary">
+                                        Mark as Processing
+                                    </button>
+                                </form>
+
+                            @elseif($inquiry->status === 'processing')
+                                        <form action="{{ url('/admin/dashboard/',$inquiry->id) }}" method="POST">
+                                            @csrf
+                                            @method('PATCH')
+                                            <input type="hidden" name="status" value="resolved">
+                                            <button type="submit" class="btn btn-sm btn-outline-success">
+                                                Mark as Resolved
+                                            </button>
+                                    </form>
+                            @else
+                            <button class="btn btn-sm btn-secondary" disabled>Resolved</button>
+                            @endif
+                    </td>
                     </tbody>
                     @endforeach
                 </table>
@@ -673,6 +702,17 @@
         let product=document.getElementById('product-item')
         let report=document.getElementById('report-item')
 
+        let rows = orders.map(ord => `
+        <tr>
+            <td>#${ord.id}</td>
+            <td>${ord.user_id}</td>
+            <td>${ord.title ?? 'N/A'}</td>
+            <td>${ord.status}</td>
+            <td>Rs. ${ord.total_amount}</td>
+            <td><button>Verify</button></td>
+        </tr>
+    `).join('');
+
 
         function insertOrder(){        
             let mainContent = document.getElementById('main-content');        
@@ -693,19 +733,8 @@
                </tr>                
                </thead>               
                 <tbody>                   
-                 <tr>                        
-                 <td>#1001</td>                       
-                  <td>Ram Sharma</td>                       
-                   <td>Laptop</td>                        
-                   <td>Pending</td>                      
-                     <td>Rs. 45,000</td>                   
-                      </tr>                    
-                      <tr>                       
-                       <td>#1002</td>                        
-                       <td>Hari Karki</td>                        
-                       <td>Mouse</td>                        
-                       <td>Delivered</td>                        
-                       <td>Rs. 2,500</td>                    </tr>                </tbody>            </table>        </div>        `;   
+                  <tbody>${rows}</tbody>                
+                    </tbody>            </table>        </div>        `;   
                        
                        }
 
