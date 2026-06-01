@@ -172,6 +172,22 @@
         @endforeach
 
     </div>
+    <!DOCTYPE html>
+
+    <p>Redirecting to eSewa payment gateway...</p>
+
+    {{-- eSewa requires a form POST --}}
+    <form id="esewaForm" action="{{ $payment_url }}" method="POST">
+        @foreach($data as $key => $value)
+            <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+        @endforeach
+        <button type="submit">Pay with eSewa</button>
+    </form>
+
+    <script>
+        // Auto submit the form
+        document.getElementById('esewaForm').submit();
+    </script>
 
 </div>
 

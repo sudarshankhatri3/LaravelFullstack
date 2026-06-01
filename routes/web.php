@@ -14,6 +14,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\EsewaController;
 
 Route::get('/', function () {
     return view('common/landingPage');
@@ -120,6 +121,12 @@ Route::middleware(['auth','customer'])->group(function(){
     // Add to cart route
     Route::get('customer/cartList',[CartController::class,'create']);
     // Route::post('customer/addCartList',[CartController::class,'store']);
+
+
+    // Route for payment gateway
+    Route::post('/esewa/pay/{orderId}',  [EsewaController::class, 'initiatePayment'])->name('esewa.pay');
+    Route::get('/esewa/success',         [EsewaController::class, 'paymentSuccess'])->name('esewa.success');
+    Route::get('/esewa/failure',         [EsewaController::class, 'paymentFailure'])->name('esewa.failure');
 
 
     

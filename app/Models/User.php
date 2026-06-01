@@ -36,6 +36,10 @@ class User extends Authenticatable
         return $this->hasMany(Cart::class);
     }
 
+    public function payment(){
+        return $this->hasMany(Payment::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
