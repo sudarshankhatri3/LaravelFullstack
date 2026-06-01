@@ -716,7 +716,31 @@
 
         function insertOrder(){        
             let mainContent = document.getElementById('main-content');        
-            mainContent.innerHTML = `        
+            mainContent.innerHTML = `  
+            
+            <div class="stats-grid">
+              
+                <div class="stat-card">
+                    <h3>Total Inquiries</h3>
+                    <div class="stat-number" id="totalCount">{{$total}}</div>
+                </div>
+                 
+                <div class="stat-card pending">
+                    <h3>Pending</h3>
+                    <div class="stat-number" id="pendingCount">{{$pending}}</div>
+                </div>
+                <div class="stat-card processing">
+                    <h3>Processing</h3>
+                    <div class="stat-number" id="processingCount">{{$processing}}</div>
+                </div>
+                <div class="stat-card resolved">
+                    <h3>Resolved</h3>
+                    <div class="stat-number" id="resolvedCount">{{$resolved}}</div>
+                </div>
+                
+            </div>
+            
+
             <div class="top-bar">           
             <h1 class="page-title">                
             <i class="fas fa-shopping-cart"></i> Orders            </h1>
@@ -743,6 +767,33 @@
 
             let mainContent = document.getElementById('main-content');        
             mainContent.innerHTML = `
+
+                div class="stats-grid">
+              
+                    <div class="stat-card">
+                        <h3>Total Inquiries</h3>
+                        <div class="stat-number" id="totalCount">{{$total}}</div>
+                    </div>
+                    
+                    <div class="stat-card pending">
+                        <h3>Pending</h3>
+                        <div class="stat-number" id="pendingCount">{{$pending}}</div>
+                    </div>
+                    <div class="stat-card processing">
+                        <h3>Processing</h3>
+                        <div class="stat-number" id="processingCount">{{$processing}}</div>
+                    </div>
+                    <div class="stat-card resolved">
+                        <h3>Resolved</h3>
+                        <div class="stat-number" id="resolvedCount">{{$resolved}}</div>
+                    </div>
+                
+                </div>
+
+
+
+
+
             
                 <div class="top-bar">           
                     <h1 class="page-title">                
@@ -797,6 +848,27 @@
         function productAnalysis(){
             let mainContent = document.getElementById('main-content');        
             mainContent.innerHTML =`
+            <div class="stats-grid">
+              
+                <div class="stat-card">
+                    <h3>Total Products</h3>
+                    <div class="stat-number" id="totalCount">{{$totalProduct}}</div>
+                </div>
+                 
+                <div class="stat-card pending">
+                    <h3>In stock</h3>
+                    <div class="stat-number" id="pendingCount">{{$inStock}}</div>
+                </div>
+                <div class="stat-card processing">
+                    <h3>Low stock</h3>
+                    <div class="stat-number" id="processingCount">{{$lowStock}}</div>
+                </div>
+                <div class="stat-card resolved">
+                    <h3>out of stock</h3>
+                    <div class="stat-number" id="resolvedCount">{{$outOfStock}}</div>
+                </div>
+                
+            </div>
     
             <div class="top-bar">           
                 <h1 class="page-title">                
@@ -808,39 +880,26 @@
                 <table>               
                     <thead>                    
                         <tr>                        
-                            <th>Order ID</th>                       
-                            <th>Customer</th>                       
-                            <th>Product</th>                        
-                            <th>Status</th>                        
-                            <th>Total</th> 
+                            <th>PRODUCT ID</th>                                             
+                            <th>TITLE</th>                       
+                            <th>QUANTITY</th>                        
+                            <th>PRICE</th> 
+                            <th>STOCK</th>
                             <th>Action</th>                   
                         </tr>                
                     </thead>
 
                     <tbody>                   
-                        <tr>                        
-                            <td>#1001</td>                       
-                            <td>Ram Sharma</td>                       
-                            <td>Laptop</td>                        
-                            <td>Pending</td>                      
-                            <td>Rs. 45,000</td>
-                            <td>
-                                <button>View</button>
-                            </td>                   
-                        </tr>                    
-
-                        <tr>                       
-                            <td>#1002</td>                        
-                            <td>Hari Karki</td>                        
-                            <td>Mouse</td>                        
-                            <td>Delivered</td>                        
-                            <td>Rs. 2,500</td>
-
-                            <td>
-                                <button>Product</button>
-                            </td>
+                        @foreach($product as $p)
+                        <tr>
+                            <td>#{{$p.id}}</td>
+                            <td>{{$p.title}}</td>
+                            <td>{{$p.quantity}}</td>
+                            <td>Rs. {{$p.price}}</td>
+                            <td>{{$p.stock}}</td>
+                            <td><button>View</button></td>
                         </tr>
-
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -850,6 +909,31 @@
         function reportAnalysis(){
             let mainContent = document.getElementById('main-content');        
             mainContent.innerHTML =`
+
+
+
+            <div class="stats-grid">
+              
+                <div class="stat-card">
+                    <h3>Total Inquiries</h3>
+                    <div class="stat-number" id="totalCount">{{$total}}</div>
+                </div>
+                 
+                <div class="stat-card pending">
+                    <h3>Pending</h3>
+                    <div class="stat-number" id="pendingCount">{{$pending}}</div>
+                </div>
+                <div class="stat-card processing">
+                    <h3>Processing</h3>
+                    <div class="stat-number" id="processingCount">{{$processing}}</div>
+                </div>
+                <div class="stat-card resolved">
+                    <h3>Resolved</h3>
+                    <div class="stat-number" id="resolvedCount">{{$resolved}}</div>
+                </div>
+                
+            </div>
+
                 <div class="top-bar">           
                     <h1 class="page-title">                
                         <i class="fas fa-shopping-cart"></i> Orders

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Inquiry;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class InquiryController extends Controller
 {
@@ -25,7 +26,14 @@ class InquiryController extends Controller
         $processing=Inquiry::where('status','processing')->count();
         $resolved=Inquiry::where('status','processing')->count();
 
-        return view('/admin/dashboard',compact('inquiry','ord','total','pending','processing','resolved'));
+        $totalProduct=Product::get()->count();
+        $inStock=Product::where('stock','in_stock')->count();
+        $lowStock=Product::where('stock','limited')->count();
+        $outOfStock=Product::where('stock','out_of_stock')->count();
+
+        $product=Product::latest()->get();
+
+        return view('/admin/dashboard',compact('inquiry','ord','total','pending','processing','resolved','totalProduct','inStock','lowStock','outOfStock','product'));
     }
     /**
      * Show the form for creating a new resource.

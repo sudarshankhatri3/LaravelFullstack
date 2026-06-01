@@ -779,8 +779,5 @@
     <p>© 2026 ShopEase. All rights reserved. | Secure checkout powered by Stripe | Need help? <a href="#" style="color: var(--primary);">Contact Support</a></p>
   </div>
 </footer>
-
-<!-- No JavaScript — Pure HTML/CSS inquiry form. All functionality uses native form elements.
-     Rating stars use CSS sibling selectors, buttons use native reset/submit. Brand value enhanced. -->
 </body>
 </html>

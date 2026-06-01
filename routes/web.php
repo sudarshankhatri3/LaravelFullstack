@@ -15,6 +15,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\EsewaController;
+use App\Http\Controllers\AdminControllers;
 
 Route::get('/', function () {
     return view('common/landingPage');
@@ -66,6 +67,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard',[InquiryController::class,'index']);
     Route::patch('/admin/dashboard/{id}',[InquiryController::class,'processing']);
     Route::patch('/admin/dashboard/{id}',[InquiryController::class,'resolved']);
+    // Route::get('/admin/dashboard',[AdminControllers::class,'index']);
 
    
     
