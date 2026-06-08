@@ -639,7 +639,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <h4><i class="fas fa-store"></i> ShopEase</h4>
+      <h4><i class="fas fa-store"></i>ShopEase</h4>
       <p>Premium ecommerce platform delivering joy since 2022. 100% authentic products.</p>
       <div class="social-icons">
         <a href="#"><i class="fab fa-instagram"></i></a>

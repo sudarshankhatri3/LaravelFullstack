@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
 
+
 class AdminControllers extends Controller
 {
 
@@ -20,4 +21,6 @@ class AdminControllers extends Controller
         $product=Product::latest()->get();
         return view('/admin/dashboard',compact('totalProduct','inStock','lowStock','outOfStock','product'));
     }
+
+    
 }

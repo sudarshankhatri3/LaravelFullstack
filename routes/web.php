@@ -63,6 +63,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // manage the product 
     Route::get('/admin/manageProduct',[DashboardController::class,'handleProduct']);
 
+    // manage the order
+    Route::get('/admin/orders',[DashboardController::class,'orderAnalytic']);
+    Route::patch('/admin/orders/{id}/status', [DashboardController::class, 'changeStatus']);
+
     // manage the inquiry
     Route::get('/admin/dashboard',[InquiryController::class,'index']);
     Route::patch('/admin/dashboard/{id}',[InquiryController::class,'processing']);
