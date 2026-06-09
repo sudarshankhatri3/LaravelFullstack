@@ -66,6 +66,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // manage the order
     Route::get('/admin/orders',[DashboardController::class,'orderAnalytic']);
     Route::patch('/admin/orders/{id}/status', [DashboardController::class, 'changeStatus']);
+    Route::get('/admin/customer',[DashboardController::class,'customerSummary']);
 
     // manage the inquiry
     Route::get('/admin/dashboard',[InquiryController::class,'index']);

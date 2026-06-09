@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\User;
+
 
 class DashboardController extends Controller
 {
@@ -50,5 +52,15 @@ class DashboardController extends Controller
         $order->update(['status' => $validated['status']]);
 
         return redirect()->back()->with('success', 'Status updated successfully');
+    }
+
+
+    // dashboard for customer
+    public function customerSummary(){
+        $totalCustomer=User::where('role','customer')->count();
+        $customer=User::where('role','customer')->get();
+
+        $orders=DB::table('orders')->join('users','users.id','=','orders.user_id')->select('orders.*')->where('users.role','customer')->get();
+        return view('admin.customer',compact('totalCustomer','customer','orders'));
     }
 }

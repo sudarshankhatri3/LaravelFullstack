@@ -561,7 +561,7 @@
                 <a href="{{ url('/admin/orders') }}" class="nav-item" id="order-item">
                     <i class="fas fa-shopping-cart"></i> Orders
                 </a>
-                <a href="#" class="nav-item" id="customer-item">
+                <a href="{{url('/admin/customer')}}" class="nav-item" id="customer-item">
                     <i class="fas fa-users"></i> Customers
                 </a>
                 <a href="#" class="nav-item" id="product-item">
