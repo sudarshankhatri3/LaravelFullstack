@@ -671,7 +671,8 @@
                                         @csrf
                                         @method('PATCH')
                                         <select name="status" class="status-select">
-                                            <button><option value="approved" {{ $order->status == 'approved'}}>Approved</option></button>
+                                            <option value="" disabled selected>Choose status</option>
+                                           <option value="approved" {{ $order->status == 'approved'}}>Approved</option>
                                             <option value="shipped" {{ $order->status == 'shipped'}}>Shipped</option>
                                             <option value="delivered" {{ $order->status == 'delivered'}}>Delivered</option>
                                         </select>

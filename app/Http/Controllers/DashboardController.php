@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $pendingOrder   = Order::where('status', 'pending')->count();
         $approvedOrder  = Order::where('status', 'shipped')->count();
         $deliveredOrder = Order::where('status', 'delivered')->count();
-        $total_amount = Order::where('status','approved')->sum('total_amount');
+        $total_amount = Order::where('status',['approved','shipped','delivered'])->sum('total_amount');
         return view('admin.order', compact('orders','totalOrder','pendingOrder','approvedOrder','deliveredOrder','total_amount'));
     }
 
