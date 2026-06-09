@@ -620,6 +620,14 @@
                     <div class="stat-number" id="approvedOrders">{{ $approvedOrder ?? 0 }}</div>
                 </div>
                 <div class="stat-card">
+                    <h3>Shipped</h3>
+                    <div class="stat-number" id="approvedOrders">{{ $shippedOrder ?? 0 }}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Delivered</h3>
+                    <div class="stat-number" id="approvedOrders">{{$deliveredOrder  ?? 0 }}</div>
+                </div>
+                <div class="stat-card">
                     <h3>Revenue (Approved)</h3>
                     <div class="stat-number" id="totalRevenue">${{ $total_amount ?? 0 }}</div>
                 </div>
