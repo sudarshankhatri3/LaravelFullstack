@@ -46,7 +46,7 @@ class DashboardController extends Controller
             'status' => 'required|in:pending,approved,shipped,delivered'
         ]);
 
-        $order->update($validated);
+        $order->update(['status' => $validated['status']]);
 
         return redirect()->back()->with('success', 'Status updated successfully');
     }

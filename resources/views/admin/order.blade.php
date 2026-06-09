@@ -667,13 +667,13 @@
                                 <td>{{ $order->created_at ? $order->created_at->format('Y-m-d') : ($order->date ?? now()->format('Y-m-d')) }}</td>
                                 <td>{{$order->status}}</td>
                                 <td>
-                                    <form action="{{ url('admin/orders/status', $order->id) }}" method="POST" class="action-form">
+                                    <form action="{{ url('admin/orders/'.$order->id.'/status') }}" method="POST" class="action-form">
                                         @csrf
                                         @method('PATCH')
                                         <select name="status" class="status-select">
-                                            <option value="approved">Approved</option>
-                                            <option value="shipped">Shipped</option>
-                                            <option value="delivered">Delivered</option>
+                                            <button><option value="approved" {{ $order->status == 'approved'}}>Approved</option></button>
+                                            <option value="shipped" {{ $order->status == 'shipped'}}>Shipped</option>
+                                            <option value="delivered" {{ $order->status == 'delivered'}}>Delivered</option>
                                         </select>
                                         <button type="submit" class="btn-update">
                                             <i class="fas fa-save"></i> Update
