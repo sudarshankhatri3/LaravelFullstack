@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminates\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 
@@ -32,5 +32,12 @@ class RegisterController extends Controller
         User::create($validated);
 
         return redirect('/common/login')->with('sucess','Register sucessfully');
+    }
+
+    // Delete the customer
+    public function remove(Request $request,$id){
+        $user=User::findOrFail($id);
+        $user->delete();
+        return redirect('/admin/customers')->with('sucess','User deleted sucessfully');
     }
 }

@@ -574,10 +574,7 @@
             <p>Admin Control Panel</p>
         </div>
         <nav class="sidebar-nav">
-                <a href="#" class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-                <a href="#" class="nav-item active">
+                <a href="{{url('/admin/inquiry')}}" class="nav-item active">
                     <i class="fas fa-envelope"></i> Inquiries
                 </a>
                 <a href="{{ url('/admin/orders') }}" class="nav-item" id="order-item">
@@ -586,7 +583,10 @@
                 <a href="{{url('/admin/customer')}}" class="nav-item" id="customer-item">
                     <i class="fas fa-users"></i> Customers
                 </a>
-                <a href="#" class="nav-item" id="product-item">
+                <a href="{{url('/admin/vendor')}}" class="nav-item" id="product-item">
+                    <i class="fas fa-box"></i> Vendors
+                </a>
+                <a href="{{url('/admin/product')}}" class="nav-item" id="product-item">
                     <i class="fas fa-box"></i> Products
                 </a>
                 <a href="#" class="nav-item" id="report-item">
@@ -654,7 +654,11 @@
                                 <td>hello</td>
                                 <td>
                                     <button>warn</button>
-                                    <button>Delete</button>
+                                     <form action="{{ url('admin/customer/'.$cst->id) }}" method="POST" class="action-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button>Remove</button>
+                                     </form>
                                 </td>
                             </tr>
                             @endforeach

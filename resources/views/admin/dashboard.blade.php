@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -542,10 +542,7 @@
                 <p>Admin Control Panel</p>
             </div>
             <nav class="sidebar-nav">
-                <a href="" class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-                <a href="" class="nav-item active">
+                <a href="{{url('/admin/inquiry')}}" class="nav-item active">
                     <i class="fas fa-envelope"></i> Inquiries
                 </a>
                 <a href="{{ url('/admin/orders') }}" class="nav-item" id="order-item">
@@ -554,6 +551,10 @@
                 <a href="" class="nav-item" id="customer-item">
                     <i class="fas fa-users"></i> Customers
                 </a>
+                <a href="" class="nav-item" id="product-item">
+                    <i class="fas fa-box"></i> Vendors
+                </a>
+
                 <a href="" class="nav-item" id="product-item">
                     <i class="fas fa-box"></i> Products
                 </a>
@@ -583,20 +584,20 @@
               
                 <div class="stat-card">
                     <h3>Total Inquiries</h3>
-                    <div class="stat-number" id="totalCount">{{$total}}</div>
+                    <div class="stat-number" id="totalCount"></div>
                 </div>
                  
                 <div class="stat-card pending">
                     <h3>Pending</h3>
-                    <div class="stat-number" id="pendingCount">{{$pending}}</div>
+                    <div class="stat-number" id="pendingCount"></div>
                 </div>
                 <div class="stat-card processing">
                     <h3>Processing</h3>
-                    <div class="stat-number" id="processingCount">{{$processing}}</div>
+                    <div class="stat-number" id="processingCount"></div>
                 </div>
                 <div class="stat-card resolved">
                     <h3>Resolved</h3>
-                    <div class="stat-number" id="resolvedCount">{{$resolved}}</div>
+                    <div class="stat-number" id="resolvedCount"></div>
                 </div>
                 
             </div>
@@ -624,7 +625,7 @@
                         </tr>
                     </thead>
                     @foreach($inquiry as $inq)
-                    <tbody id="inquiriesTableBody">
+                    {{-- <tbody id="inquiriesTableBody">
                         <!-- Dynamic content -->
                          <td>#100{{$inq->id}}</td>
                          <td>{{$inq->users->name}}</td>
@@ -635,11 +636,11 @@
                          <div>
                              <button>pending</button>
                          </div>
-                    </tbody>
+                    </tbody> --}}
                     @endforeach
                 </table>
             </div>
         </main>
     </div>                 
 </body>
-</html>
+</html> --}}

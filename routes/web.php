@@ -67,12 +67,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/orders',[DashboardController::class,'orderAnalytic']);
     Route::patch('/admin/orders/{id}/status', [DashboardController::class, 'changeStatus']);
     Route::get('/admin/customer',[DashboardController::class,'customerSummary']);
+    Route::delete('/admin/customer/{id}',[RegisterController::class,'remove']);
 
     // manage the inquiry
     Route::get('/admin/dashboard',[InquiryController::class,'index']);
     Route::patch('/admin/dashboard/{id}',[InquiryController::class,'processing']);
     Route::patch('/admin/dashboard/{id}',[InquiryController::class,'resolved']);
-    // Route::get('/admin/dashboard',[AdminControllers::class,'index']);
+    Route::get('admin/product',[DashboardController::class,'product']);
+    // Route::get('admin/vendor',[DashboardController::class,'product']);
+    Route::get('/admin/inquiry',[InquiryController::class,'index']);
 
    
     

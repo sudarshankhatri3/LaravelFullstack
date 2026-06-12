@@ -552,10 +552,7 @@
                 <p>Admin Control Panel</p>
             </div>
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-                <a href="#" class="nav-item active">
+                <a href="{{url('/admin/inquiry')}}" class="nav-item active">
                     <i class="fas fa-envelope"></i> Inquiries
                 </a>
                 <a href="{{ url('/admin/orders') }}" class="nav-item" id="order-item">
@@ -564,7 +561,10 @@
                 <a href="{{url('/admin/customer')}}" class="nav-item" id="customer-item">
                     <i class="fas fa-users"></i> Customers
                 </a>
-                <a href="#" class="nav-item" id="product-item">
+                <a href="{{url('admin/vendor')}}" class="nav-item" id="product-item">
+                    <i class="fas fa-box"></i> Vendors
+                </a>
+                <a href="{{url('/admin/product')}}" class="nav-item" id="product-item">
                     <i class="fas fa-box"></i> Products
                 </a>
                 <a href="#" class="nav-item" id="report-item">
@@ -598,11 +598,14 @@
                     <h1><i class="fas fa-clipboard-list" style="color: var(--primary);"></i> Order Management</h1>
                     <p style="font-size: 0.85rem; color: var(--text-muted);">Review and approve customer orders</p>
                 </div>
-                <div class="admin-profile">
+                <button href="{{url('/vendor/logOut')}}">
+                    <form action="{{url('/vendor/logOut')}}"  method="POST" class="admin-profile">
                     <i class="fas fa-bell" style="color: var(--text-muted);"></i>
-                    <span>Admin</span>
+                    <div>Admin</div>
                     <img src="https://ui-avatars.com/api/?background=ff6600&color=fff&name=Admin" alt="admin">
-                </div>
+                </form>
+                </button>
+                
             </div>
 
             <!-- stats summary -->

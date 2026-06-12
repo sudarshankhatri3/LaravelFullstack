@@ -63,4 +63,17 @@ class DashboardController extends Controller
         $orders=DB::table('orders')->join('users','users.id','=','orders.user_id')->select('orders.*')->where('users.role','customer')->get();
         return view('admin.customer',compact('totalCustomer','customer','orders'));
     }
+
+
+    // dashboard product
+    public function product(){
+        $totalProduct=Product::get()->count();
+        $inStock=Product::where('stock','in_stock')->count();
+        $lowStock=Product::where('stock','limited')->count();
+        $outOfStock=Product::where('stock','out_of_stock')->count();
+
+        $product=Product::latest()->get();
+        return view('/admin/dashboard',compact('totalProduct','inStock','lowStock','outOfStock','product'));
+    }
+
 }
