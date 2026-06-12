@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
   <meta name="description" content="ShopEase - Customer Inquiry Center | Get product support, order assistance, and after-sales service" />
   <meta name="theme-color" content="#ff6600" />
-  <title>ShopEase | Customer Inquiry Center</title>
+  <title>ShopEase | Customer Inquiry Center | Responsive All Devices</title>
   
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   
   <style>
-    /* ---------- GLOBAL RESET & VARIABLES (Matching ShopEase Brand) ---------- */
+    /* ---------- GLOBAL RESET & VARIABLES ---------- */
     * {
       margin: 0;
       padding: 0;
@@ -67,14 +67,14 @@
       border-radius: 8px;
     }
 
-    /* container utility */
+    /* container utility - responsive padding */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
-    /* ========== NAVBAR (Matching Original Brand) ========== */
+    /* ========== NAVBAR - RESPONSIVE (Desktop, Tablet, Mobile) ========== */
     .navbar {
       position: sticky;
       top: 0;
@@ -161,7 +161,7 @@
       transform: translateY(-1px);
     }
 
-    /* ========== HERO SECTION (Brand Trust) ========== */
+    /* ========== HERO SECTION - FULLY RESPONSIVE ========== */
     .inquiry-hero {
       background: linear-gradient(130deg, #fff9f2 0%, #ffffff 70%);
       padding: 3rem 2rem 3rem;
@@ -195,7 +195,7 @@
       margin: 0 auto;
     }
 
-    /* ========== MAIN INQUIRY FORM (Single Powerful Form) ========== */
+    /* ========== MAIN INQUIRY FORM - FULLY RESPONSIVE ========== */
     .inquiry-main {
       padding: 4rem 2rem;
       max-width: 1000px;
@@ -223,6 +223,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
     .form-header h2 i {
       color: var(--primary);
@@ -279,6 +280,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      flex-wrap: wrap;
     }
     label .required {
       color: #e03a3a;
@@ -319,7 +321,7 @@
       min-height: 120px;
     }
 
-    /* radio and checkbox groups (brand style) */
+    /* radio and checkbox groups */
     .radio-group, .checkbox-group {
       display: flex;
       flex-wrap: wrap;
@@ -334,6 +336,7 @@
       font-size: 0.9rem;
       color: var(--gray-dark);
       cursor: pointer;
+      flex-wrap: wrap;
     }
     .radio-option input, .check-option input {
       width: 1.1rem;
@@ -344,13 +347,14 @@
       cursor: pointer;
     }
 
-    /* rating stars (pure css, enhances brand value) */
+    /* rating stars (touch-friendly) */
     .rating-stars {
       display: flex;
       flex-direction: row-reverse;
       justify-content: flex-end;
       gap: 0.5rem;
       margin-top: 0.4rem;
+      flex-wrap: wrap;
     }
     .rating-stars input {
       display: none;
@@ -377,18 +381,7 @@
       color: #64748b;
     }
 
-    /* inquiry type tag */
-    .inquiry-type-tag {
-      background: var(--primary-light);
-      border-radius: 2rem;
-      padding: 0.2rem 0.8rem;
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--primary-dark);
-    }
-
-    /* file input styling */
+    /* file input */
     input[type="file"] {
       padding: 0.7rem 0.5rem;
       background: #f9f9fc;
@@ -408,9 +401,10 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      flex-wrap: wrap;
     }
 
-    /* action buttons */
+    /* form actions */
     .form-actions {
       margin-top: 2rem;
       display: flex;
@@ -478,6 +472,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
     .trust-item i {
       font-size: 1.6rem;
@@ -489,7 +484,7 @@
       color: var(--dark);
     }
 
-    /* footer matching original */
+    /* footer fully responsive all devices */
     footer {
       background: #0b1120;
       color: #e2e8f0;
@@ -522,6 +517,7 @@
       display: flex;
       gap: 1rem;
       margin-top: 1rem;
+      flex-wrap: wrap;
     }
     .social-icons a {
       background: #1e293b;
@@ -547,9 +543,69 @@
       color: #5b6e8c;
     }
 
-    /* responsive */
-    @media (max-width: 750px) {
+    /* ========== ADVANCED RESPONSIVE BREAKPOINTS: DESKTOP, TABLET, MOBILE ========== */
+    
+    /* Large Desktop (1200px+) - default styles already optimized */
+    
+    /* Small Desktop / Laptop (1024px - 1199px) */
+    @media (max-width: 1199px) {
       .container {
+        padding: 0 1.8rem;
+      }
+      .inquiry-main {
+        padding: 3rem 1.8rem;
+      }
+    }
+    
+    /* Tablet Landscape (900px - 1023px) */
+    @media (max-width: 1023px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .inquiry-hero h1 {
+        font-size: 2.5rem;
+      }
+      .form-header {
+        padding: 1.8rem;
+      }
+      .form-header h2 {
+        font-size: 1.6rem;
+      }
+      .form-body {
+        padding: 1.8rem;
+      }
+      .form-grid {
+        gap: 1.2rem;
+      }
+      .trust-banner {
+        gap: 0.8rem;
+      }
+    }
+    
+    /* Tablet Portrait (768px - 899px) */
+    @media (max-width: 899px) {
+      .navbar {
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        text-align: center;
+      }
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+      }
+      .auth-buttons {
+        justify-content: center;
+        width: 100%;
+        margin-left: 0;
+      }
+      .inquiry-hero {
+        padding: 2rem 1rem;
+      }
+      .inquiry-hero h1 {
+        font-size: 2.2rem;
+      }
+      .inquiry-hero p {
+        font-size: 1rem;
         padding: 0 1rem;
       }
       .form-grid {
@@ -559,29 +615,194 @@
       .full-width {
         grid-column: span 1;
       }
-      .form-body {
-        padding: 1.5rem;
-      }
-      .form-header {
-        padding: 1.5rem;
-      }
-      .inquiry-hero h1 {
-        font-size: 2rem;
-      }
-      .navbar {
-        flex-direction: column;
-        padding: 1rem;
+      .support-channels {
+        gap: 0.8rem;
       }
       .trust-banner {
         flex-direction: column;
         align-items: flex-start;
+        padding: 1rem;
+      }
+      .trust-item {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+    
+    /* Mobile Landscape (576px - 767px) */
+    @media (max-width: 767px) {
+      .inquiry-hero h1 {
+        font-size: 1.9rem;
+      }
+      .form-header {
+        padding: 1.2rem;
+      }
+      .form-header h2 {
+        font-size: 1.4rem;
+      }
+      .form-header h2 i {
+        font-size: 1.5rem;
+      }
+      .form-body {
+        padding: 1.2rem;
+      }
+      .support-channel {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.8rem;
+      }
+      input, select, textarea {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+      }
+      .btn-submit, .btn-reset {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+      }
+      .form-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-submit, .btn-reset {
+        width: 100%;
+        justify-content: center;
+      }
+      .radio-group {
+        gap: 1rem;
+      }
+      .rating-stars label {
+        font-size: 1.7rem;
+      }
+    }
+    
+    /* Mobile Portrait (320px - 575px) */
+    @media (max-width: 575px) {
+      .container {
+        padding: 0 1rem;
+      }
+      .inquiry-main {
+        padding: 2rem 1rem;
+      }
+      .inquiry-hero h1 {
+        font-size: 1.6rem;
+      }
+      .inquiry-hero .badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 1rem;
+      }
+      .form-header h2 {
+        font-size: 1.2rem;
+      }
+      .form-header h2 i {
+        font-size: 1.3rem;
+      }
+      .form-header p {
+        font-size: 0.8rem;
+      }
+      .support-channel {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.6rem;
+      }
+      .support-channel i {
+        font-size: 0.8rem;
+      }
+      label {
+        font-size: 0.75rem;
+      }
+      input, select, textarea {
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+      }
+      .btn-submit, .btn-reset {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      .social-icons {
+        justify-content: center;
+      }
+      .copyright {
+        font-size: 0.7rem;
+      }
+      .trust-item i {
+        font-size: 1.3rem;
+      }
+      .trust-item span {
+        font-size: 0.75rem;
+      }
+      .rating-stars label {
+        font-size: 1.4rem;
+      }
+      .helper-text {
+        font-size: 0.65rem;
+      }
+    }
+    
+    /* Extra small devices (below 320px) */
+    @media (max-width: 319px) {
+      .inquiry-hero h1 {
+        font-size: 1.4rem;
+      }
+      .form-header h2 {
+        font-size: 1rem;
+      }
+      .logo {
+        font-size: 1.4rem;
+      }
+      .logo i {
+        font-size: 1.3rem;
+      }
+      .login-btn, .signup-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+      }
+      .trust-item {
+        gap: 8px;
+      }
+    }
+    
+    /* Touch-friendly improvements for all mobile devices */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn-submit, .btn-reset, .nav-links a, .trust-item, .radio-option, .check-option {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      input, select, textarea {
+        font-size: 16px; /* prevents zoom on iOS when focusing */
+      }
+      .btn-submit, .btn-reset, .login-btn, .signup-btn {
+        min-height: 44px; /* better touch target */
+      }
+    }
+    
+    /* High-resolution screens (retina) */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .form-card {
+        box-shadow: var(--shadow-lg);
+      }
+    }
+    
+    /* Print styles (optional) */
+    @media print {
+      .navbar, footer, .form-actions, .trust-banner, .support-channels {
+        display: none;
+      }
+      .form-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+      body {
+        background: white;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- ========== NAVBAR (Same Brand Identity) ========== -->
+<!-- ========== NAVBAR (Brand Identity - Fully Responsive) ========== -->
 <nav class="navbar">
   <a href="#" class="logo">
     <i class="fas fa-store"></i> ShopEase
@@ -601,7 +822,7 @@
   </div>
 </section>
 
-<!-- ========== MAIN INQUIRY FORM (Product + After Order Combined) ========== -->
+<!-- ========== MAIN INQUIRY FORM ========== -->
 <div class="inquiry-main">
   <div class="form-card">
     <div class="form-header">
@@ -614,7 +835,7 @@
       </div>
     </div>
     
-    <form class="form-body" action="{{url('/customer/inquiry')}}" method="post">
+    <form class="form-body" action="{{url('/customer/inquiry')}}" method="post" enctype="multipart/form-data">
       <div class="form-grid">
         <!-- Personal Information -->
         <div class="input-group">
@@ -652,7 +873,7 @@
           <div class="helper-text">Select the category that best matches your concern</div>
         </div>
 
-        <!-- Product Name (for product inquiries) -->
+        <!-- Product Name -->
         <div class="input-group full-width">
           <label><i class="fas fa-box"></i> Product Name / SKU (if applicable)</label>
           <input type="text" name="product_name" placeholder="e.g., AirFlow Pro Runners, SonicBass H9...">
@@ -675,7 +896,7 @@
           </div>
         </div>
 
-        <!-- Customer Satisfaction Rating (Brand Trust) -->
+        <!-- Customer Satisfaction Rating -->
         <div class="input-group full-width">
           <label><i class="fas fa-star"></i> Rate Your Recent Experience</label>
           <div class="rating-stars">
@@ -696,11 +917,11 @@
         <!-- Detailed Message -->
         <div class="input-group full-width">
           <label><i class="fas fa-edit"></i> Your Message <span class="required">*</span></label>
-          <textarea name="message" placeholder="Please describe your question, issue, or feedback in detail. Include any relevant order or product information to help us assist you better."></textarea>
+          <textarea name="message" placeholder="Please describe your question, issue, or feedback in detail. Include any relevant order or product information to help us assist you better." required></textarea>
           <div class="helper-text">We take every inquiry seriously and aim to resolve within 24 hours.</div>
         </div>
 
-        <!-- Attachment (Optional) -->
+        <!-- Attachment -->
         <div class="input-group full-width">
           <label><i class="fas fa-paperclip"></i> Attach Screenshot / Invoice (Optional)</label>
           <input type="file" name="screenshot" accept="image/*, .pdf, .jpg, .png">
@@ -732,7 +953,7 @@
     </form>
   </div>
 
-  <!-- Trust Banner (Reinforcing Brand Value) -->
+  <!-- Trust Banner -->
   <div class="trust-banner">
     <div class="trust-item"><i class="fas fa-clock"></i><span>24/7 Support Response</span></div>
     <div class="trust-item"><i class="fas fa-shield-alt"></i><span>100% Secure & Private</span></div>
@@ -741,7 +962,7 @@
   </div>
 </div>
 
-<!-- ========== FOOTER (Matching Original Brand) ========== -->
+<!-- ========== FOOTER (Fully Responsive for all devices) ========== -->
 <footer>
   <div class="footer-grid">
     <div class="footer-col">

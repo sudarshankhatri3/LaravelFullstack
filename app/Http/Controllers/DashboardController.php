@@ -71,9 +71,10 @@ class DashboardController extends Controller
         $inStock=Product::where('stock','in_stock')->count();
         $lowStock=Product::where('stock','limited')->count();
         $outOfStock=Product::where('stock','out_of_stock')->count();
+        $comingStock=Product::where('stock','coming_soon')->count();
 
         $product=Product::latest()->get();
-        return view('/admin/dashboard',compact('totalProduct','inStock','lowStock','outOfStock','product'));
+        return view('/admin/product',compact('totalProduct','inStock','comingStock','lowStock','outOfStock','product'));
     }
 
 }

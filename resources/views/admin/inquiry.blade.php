@@ -574,17 +574,16 @@
                         </tr>
                     </thead>
                     <tbody id="inquiryTableBody">
-                        @foreach ($inq as $inquiry)
+                       @foreach($inquiry as $inq)
                         <tr>
-                            <td>{{$inq->id}}</td>
-                            <td>{{$inq->}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>#100{{$inq->id}}</td>
+                            <td>{{$inq->user->name}}</td>
+                            <td>#100{{$inq->order_id}}</td>
+                            <td>{{$inq->message}}</td>
+                            <td>{{$inq->status}}</td>
+                            <td>{{$inq->created_at}}</td>
                         </tr>
-                            
                         @endforeach
-                        <tr></tr>
                     </tbody>
                 </table>
             </div>

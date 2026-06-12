@@ -73,8 +73,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard',[InquiryController::class,'index']);
     Route::patch('/admin/dashboard/{id}',[InquiryController::class,'processing']);
     Route::patch('/admin/dashboard/{id}',[InquiryController::class,'resolved']);
+
+    // manage the product 
     Route::get('admin/product',[DashboardController::class,'product']);
-    // Route::get('admin/vendor',[DashboardController::class,'product']);
+    
     Route::get('/admin/inquiry',[InquiryController::class,'index']);
 
    

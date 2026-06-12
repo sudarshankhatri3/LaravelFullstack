@@ -33,7 +33,7 @@ class InquiryController extends Controller
 
         $product=Product::latest()->get();
 
-        return view('/admin/inquiry',compact('inquiry','ord','total','pending','processing','resolved','totalProduct','inStock','lowStock','outOfStock','product'));
+        return view('/admin/dashboard',compact('inquiry','ord','total','pending','processing','resolved','totalProduct','inStock','lowStock','outOfStock','product'));
     }
     /**
      * Show the form for creating a new resource.

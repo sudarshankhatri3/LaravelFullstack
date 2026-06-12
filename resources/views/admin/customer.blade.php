@@ -354,7 +354,7 @@
         .btn-update, .btn-primary {
             background: var(--primary);
             border: none;
-            color: white;
+            /* color: white; */
             padding: 0.4rem 1rem;
             border-radius: 2rem;
             font-weight: 600;
@@ -367,8 +367,8 @@
         }
 
         .btn-update:hover, .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
+            /* background: var(--primary-dark);
+            transform: translateY(-1px); */
         }
 
         /* Avatar placeholder for customers */

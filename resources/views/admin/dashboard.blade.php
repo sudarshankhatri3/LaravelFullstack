@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -575,8 +575,7 @@
                             <button href="{{url('/vendor/logOut')}}" class="admin-avatar">👋 </button>
                         </form>
                    
-                </div>
-      
+                    </div>
             </div>
 
             <!-- Statistics Cards -->
@@ -624,23 +623,25 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    @foreach($inquiry as $inq)
-                    {{-- <tbody id="inquiriesTableBody">
-                        <!-- Dynamic content -->
-                         <td>#100{{$inq->id}}</td>
-                         <td>{{$inq->users->name}}</td>
-                         <td>#100{{$inq->order_id}}</td>
-                         <td>{{$inq->message}}</td>
-                         <td>{{$inq->status}}</td>
-                         <td>{{$inq->created_at}}</td>
-                         <div>
-                             <button>pending</button>
-                         </div>
-                    </tbody> --}}
-                    @endforeach
+                   
+                    <tbody id="inquiriesTableBody"> 
+                        @foreach($inquiry as $inq)
+                        <tr> 
+                            <td>#100{{$inq->id}}</td>
+                            <td>{{$inq->users->name}}</td>
+                            <td>#100{{$inq->order_id}}</td>
+                            <td>{{$inq->message}}</td>
+                            <td>{{$inq->status}}</td>
+                            <td>{{$inq->created_at}}</td>
+                            <div>
+                                <button>pending</button>
+                            </div>
+                        </tr>  
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </main>
     </div>                 
 </body>
-</html> --}}
+</html>
