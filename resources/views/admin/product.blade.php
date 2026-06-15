@@ -409,10 +409,10 @@
         tr {
             transition: background var(--transition-fast);
         }
-
+/* 
         tr:hover {
             background: #fefef8;
-        }
+        } */
 
         tr:last-child td {
             border-bottom: none;
@@ -556,14 +556,14 @@
         .page-btn:hover {
             background: var(--primary);
             border-color: var(--primary);
-            color: white;
+            /* color: white; */
             transform: translateY(-1px);
         }
 
         .page-btn.active {
             background: var(--primary);
             border-color: var(--primary);
-            color: white;
+            /* color: white; */
         }
 
         /* ============================================

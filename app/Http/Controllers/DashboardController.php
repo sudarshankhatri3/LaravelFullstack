@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\User;
+use Carbon\Carbon;
 
 
 class DashboardController extends Controller
@@ -56,12 +57,12 @@ class DashboardController extends Controller
 
 
     // dashboard for customer
-    public function customerSummary(){
+    public function customerSummary(Request $request){
         $totalCustomer=User::where('role','customer')->count();
         $customer=User::where('role','customer')->get();
-
-        $orders=DB::table('orders')->join('users','users.id','=','orders.user_id')->select('orders.*')->where('users.role','customer')->get();
-        return view('admin.customer',compact('totalCustomer','customer','orders'));
+        $newAdd=User::where('created_at','>=',Carbon::now()->subDays(7))->count();
+        $orders=DB::table('orders')->join('users','users.id','=','orders.user_id')->select('orders.*')->where('users.role','customer')->count();
+        return view('admin.customer',compact('totalCustomer','customer','newAdd','orders'));
     }
 
 
@@ -75,6 +76,12 @@ class DashboardController extends Controller
 
         $product=Product::latest()->get();
         return view('/admin/product',compact('totalProduct','inStock','comingStock','lowStock','outOfStock','product'));
+    }
+
+
+    //  dashboard vendors
+    public function vendor(){
+        return view('/admin/vendors');
     }
 
 }

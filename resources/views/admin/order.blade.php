@@ -896,7 +896,7 @@
                 <a href="{{url('/admin/customer')}}" class="nav-item" id="customer-item">
                     <i class="fas fa-users"></i> Customers
                 </a>
-                <a href="{{url('admin/vendor')}}" class="nav-item" id="product-item">
+                <a href="{{url('/admin/vendors')}}" class="nav-item" id="product-item">
                     <i class="fas fa-box"></i> Vendors
                 </a>
                 <a href="{{url('/admin/product')}}" class="nav-item" id="product-item">

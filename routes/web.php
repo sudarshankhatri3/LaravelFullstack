@@ -77,7 +77,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // manage the product 
     Route::get('admin/product',[DashboardController::class,'product']);
     
+    // manage the inquiry
     Route::get('/admin/inquiry',[InquiryController::class,'index']);
+
+    // manage the vendors
+    Route::get('/admin/vendors',[DashboardController::class,'vendors']);
 
    
     

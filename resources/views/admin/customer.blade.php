@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
+        /* ============================================
+           RESET & GLOBAL STYLES
+        ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -20,560 +23,584 @@
         :root {
             --primary: #ff6600;
             --primary-dark: #e05a00;
-            --primary-light: #fff0e6;
-            --admin-bg: #f1f5f9;
-            --card-bg: #ffffff;
-            --sidebar-dark: #0f172a;
-            --text-dark: #0f172a;
-            --text-muted: #475569;
-            --border-light: #e2e8f0;
+            --primary-light: #ffefe5;
+            --primary-gradient: linear-gradient(135deg, #ff6600 0%, #ff9944 100%);
+            --secondary: #2c3e66;
+            --dark: #1a1f2c;
+            --gray-dark: #2d3748;
+            --gray: #4a5568;
+            --gray-light: #edf2f7;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
             --success: #10b981;
-            --warning: #f59e0b;
             --danger: #ef4444;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --radius-sm: 0.5rem;
+            --radius: 0.75rem;
             --radius-lg: 1rem;
-            --radius-md: 0.75rem;
+            --radius-xl: 1.5rem;
+            --transition-fast: 0.15s ease;
+            --transition: 0.25s ease;
+            --transition-slow: 0.3s ease;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--admin-bg);
-            color: var(--text-dark);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: var(--bg-light);
+            color: var(--dark);
             line-height: 1.5;
+            overflow-x: hidden;
         }
 
-        /* Dashboard Layout */
-        .dashboard {
+        /* ============================================
+           UTILITY CLASSES
+        ============================================ */
+        .text-primary { color: var(--primary); }
+        .text-success { color: var(--success); }
+        .text-warning { color: var(--warning); }
+        .text-danger { color: var(--danger); }
+        .text-info { color: var(--info); }
+        .text-gray { color: var(--gray); }
+        .text-dark { color: var(--dark); }
+        
+        .bg-primary { background: var(--primary); }
+        .bg-success { background: var(--success); }
+        .bg-warning { background: var(--warning); }
+        .bg-danger { background: var(--danger); }
+        .bg-info { background: var(--info); }
+        .bg-light { background: var(--bg-light); }
+        
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 1rem; }
+        .mt-4 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        
+        .p-1 { padding: 0.25rem; }
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 1rem; }
+        .p-4 { padding: 1.5rem; }
+        
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .gap-1 { gap: 0.25rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 1rem; }
+        .gap-4 { gap: 1.5rem; }
+        
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        
+        .rounded { border-radius: var(--radius); }
+        .rounded-lg { border-radius: var(--radius-lg); }
+        .rounded-xl { border-radius: var(--radius-xl); }
+        .rounded-full { border-radius: 9999px; }
+        
+        .shadow-xs { box-shadow: var(--shadow-xs); }
+        .shadow-sm { box-shadow: var(--shadow-sm); }
+        .shadow-md { box-shadow: var(--shadow-md); }
+        .shadow-lg { box-shadow: var(--shadow-lg); }
+        .shadow-xl { box-shadow: var(--shadow-xl); }
+
+        /* ============================================
+           ADMIN CONTAINER LAYOUT
+        ============================================ */
+        .admin-container {
             display: flex;
             min-height: 100vh;
-            width: 100%;
         }
 
-        /* SIDEBAR */
+        /* ============================================
+           SIDEBAR - Modern Dark Theme
+        ============================================ */
         .sidebar {
             width: 280px;
-            background: var(--sidebar-dark);
+            background: linear-gradient(145deg, #0a1a2a 0%, #0f2a3a 100%);
             color: #e2e8f0;
             position: fixed;
             height: 100vh;
             overflow-y: auto;
-            transition: transform 0.3s ease-in-out;
-            z-index: 1000;
+            transition: transform var(--transition-slow);
+            z-index: 100;
+            scrollbar-width: thin;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
         }
 
         .sidebar-header {
             padding: 1.8rem 1.5rem;
-            border-bottom: 1px solid #1e293b;
-            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(90deg, rgba(255, 102, 0, 0.1), transparent);
         }
 
         .sidebar-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: white;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .sidebar-header h3 i {
             color: var(--primary);
+            margin-right: 8px;
+            background: none;
+            background-clip: unset;
+            -webkit-background-clip: unset;
         }
 
         .sidebar-header p {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            opacity: 0.6;
+            margin-top: 0.4rem;
+            letter-spacing: 0.5px;
         }
 
         .sidebar-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
+            padding: 1.2rem 0;
         }
 
         .nav-item {
+            padding: 0.85rem 1.5rem;
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 0.8rem 1.5rem;
-            margin: 0.3rem 1rem;
-            border-radius: 0.75rem;
-            color: #cbd5e1;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: 0.2s;
+            transition: var(--transition-fast);
             font-weight: 500;
+            cursor: pointer;
+            margin: 0.2rem 0.8rem;
+            border-radius: var(--radius);
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 102, 0, 0.12);
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(255, 102, 0, 0.2), transparent);
+            color: var(--primary);
+            border-left: 3px solid var(--primary);
         }
 
         .nav-item i {
             width: 24px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            text-align: center;
         }
 
-        .nav-item.active {
-            background: rgba(255, 102, 0, 0.15);
-            color: var(--primary);
-        }
-
-        /* Pure CSS Tab Container */
-        .tab-container {
+        /* ============================================
+           MAIN CONTENT AREA
+        ============================================ */
+        .main-content {
             flex: 1;
             margin-left: 280px;
-            padding: 1.8rem 2rem 2rem;
+            padding: 1.8rem;
+            transition: margin-left var(--transition-slow);
             width: calc(100% - 280px);
-            transition: margin-left 0.3s ease;
         }
 
-        /* Hide all tab content by default */
-        .tab-content {
-        }
-
-        /* Radio buttons to control tabs */
-        .tab-radio {
-            display: none;
-        }
-
-
-        /* Top Bar */
+        /* ============================================
+           TOP BAR / HEADER
+        ============================================ */
         .top-bar {
+            background: var(--white);
+            padding: 1rem 1.8rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 2rem;
-            background: var(--card-bg);
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.03);
         }
 
-        .page-title h1 {
-            font-size: 1.6rem;
+        .page-title {
+            font-size: 1.5rem;
             font-weight: 700;
-        }
-
-        .page-title p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.2rem;
-        }
-
-        .admin-profile {
+            color: var(--dark);
             display: flex;
             align-items: center;
-            gap: 12px;
-            background: var(--admin-bg);
+            gap: 0.75rem;
+        }
+
+        .page-title i {
+            color: var(--primary);
+            font-size: 1.6rem;
+        }
+
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--bg-light);
             padding: 0.4rem 1rem;
-            border-radius: 2rem;
+            border-radius: 2.5rem;
         }
 
-        .admin-profile img {
-            width: 36px;
-            height: 36px;
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
             border-radius: 50%;
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            border: none;
         }
 
-        /* Stats Cards Grid */
+        .admin-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ============================================
+           STATISTICS CARDS
+        ============================================ */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 1.2rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .stat-card {
-            background: var(--card-bg);
-            padding: 1.2rem 1.2rem;
-            border-radius: var(--radius-md);
+            background: var(--white);
+            padding: 1.4rem 1.6rem;
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--primary);
-            transition: 0.2s;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
         .stat-card h3 {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
+            letter-spacing: 0.8px;
+            color: var(--gray);
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .stat-number {
             font-size: 2.2rem;
             font-weight: 800;
-            color: var(--text-dark);
-            word-break: break-word;
+            color: var(--dark);
+            line-height: 1.2;
         }
 
-        /* Data Panels (Tables) */
-        .data-panel {
-            background: var(--card-bg);
+        /* Card variations */
+        .stat-card.pending .stat-number { color: var(--warning); }
+        .stat-card.processing .stat-number { color: var(--info); }
+        .stat-card.resolved .stat-number { color: var(--success); }
+        
+        .stat-card.pending::before { background: var(--warning); }
+        .stat-card.processing::before { background: var(--info); }
+        .stat-card.resolved::before { background: var(--success); }
+
+        /* ============================================
+           BULK ACTIONS BAR & CONTROLS
+        ============================================ */
+        .bulk-actions {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            background: var(--white);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xs);
+        }
+
+        /* ============================================
+           TABLE STYLES - Modern & Clean
+        ============================================ */
+        .table-container {
+            background: var(--white);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             overflow-x: auto;
-            width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
-        .panel-header {
-            padding: 1.2rem 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .panel-header h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .filter-group select,
-        .filter-group input {
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            border: 1px solid var(--border-light);
-            background: white;
-            font-family: inherit;
-            font-size: 0.85rem;
-            min-width: 160px;
-        }
-
-        /* Table Styles */
-        .data-table {
+        table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 900px;
+            min-width: 800px;
         }
 
-        .data-table th {
+        th {
+            padding: 1rem 1.2rem;
             text-align: left;
-            padding: 1rem 1.2rem;
-            background: #f8fafc;
+            background: #fafbfc;
             font-weight: 600;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border-light);
-            font-size: 0.85rem;
+            color: var(--gray-dark);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1.5px solid var(--gray-light);
         }
 
-        .data-table td {
+        td {
             padding: 1rem 1.2rem;
-            border-bottom: 1px solid var(--border-light);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
             vertical-align: middle;
             font-size: 0.9rem;
         }
 
-        /* Product Image */
-        .product-thumb {
-            width: 48px;
-            height: 48px;
+        tr {
+            transition: background var(--transition-fast);
+        }
+
+        /* tr:hover {
+            background: #fefef8;
+        } */
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .checkbox-col {
+            width: 40px;
+            text-align: center;
+        }
+
+        td img {
+            width: 50px;
+            height: 50px;
             object-fit: cover;
-            border-radius: 0.5rem;
-            background: #f1f5f9;
-            display: block;
+            border-radius: var(--radius-sm);
+            background: var(--gray-light);
+            border: 1px solid var(--gray-light);
         }
 
-        /* Status Badges */
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #fef3c7;
-            color: #b45309;
-            padding: 0.25rem 0.75rem;
+        /* ============================================
+           BADGES & TAGS
+        ============================================ */
+        .badge {
+            padding: 0.3rem 0.9rem;
             border-radius: 2rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            white-space: nowrap;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: inline-block;
+            letter-spacing: 0.3px;
         }
 
-        .status-badge.approved,
-        .status-badge.active {
-            background: #d1fae5;
-            color: #065f46;
-        }
+        .badge-pending { background: #fef3c7; color: #d97706; }
+        .badge-processing { background: #dbeafe; color: #2563eb; }
+        .badge-resolved { background: #d1fae5; color: #059669; }
+        .badge-closed { background: #e5e7eb; color: #4b5563; }
+        .badge-success { background: var(--success); color: white; }
+        .badge-warning { background: var(--warning); color: white; }
+        .badge-danger { background: var(--danger); color: white; }
+        .badge-info { background: var(--info); color: white; }
 
-        .status-badge.pending {
-            background: #ffedd5;
-            color: #9a3412;
-        }
-
-        .status-badge.shipped {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-
-        .status-badge.delivered {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .status-badge.inactive {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .status-badge.resolved {
-            background: #e0e7ff;
-            color: #3730a3;
-        }
-
-        /* Action Forms & Buttons */
-        .action-form {
-            display: inline-flex;
-            gap: 0.5rem;
-            align-items: center;
+        /* ============================================
+           ACTION BUTTONS
+        ============================================ */
+        .action-buttons {
+            display: flex;
+            gap: 0.6rem;
             flex-wrap: wrap;
         }
 
-        .status-select {
-            padding: 0.4rem 0.75rem;
+        .btn {
+            padding: 0.45rem 1rem;
             border-radius: 2rem;
-            border: 1px solid var(--border-light);
-            background: white;
-            font-family: inherit;
             font-size: 0.75rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-        }
-
-        .btn-update, .btn-primary {
-            background: var(--primary);
+            transition: var(--transition-fast);
             border: none;
-            /* color: white; */
-            padding: 0.4rem 1rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: 0.2s;
+            font-family: inherit;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 0.4rem;
         }
 
-        .btn-update:hover, .btn-primary:hover {
-            /* background: var(--primary-dark);
-            transform: translateY(-1px); */
-        }
-
-        /* Avatar placeholder for customers */
-        .avatar-placeholder {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-light);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        .customer-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .customer-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .customer-name {
-            font-weight: 600;
-        }
-
-        .customer-email {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
+        .btn-primary {
             background: var(--primary);
             color: white;
-            border: none;
-            font-size: 1rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 2rem;
-            cursor: pointer;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            margin: 1rem 1rem 0 1rem;
-            width: fit-content;
         }
 
-        .mobile-menu-toggle:hover {
+        .btn-primary:hover {
             background: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
-        /* Sidebar Overlay & Toggle Hack */
-        #menu-toggle {
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--gray-light);
+            color: var(--gray-dark);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-sm {
+            padding: 0.35rem 0.8rem;
+            font-size: 0.7rem;
+        }
+
+        /* ============================================
+           PAGINATION
+        ============================================ */
+        .pagination {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 0.5rem 1rem;
+            min-width: 2.5rem;
+            border: 1px solid var(--gray-light);
+            background: var(--white);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-weight: 500;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* ============================================
+           PURE CSS TAB NAVIGATION CONTROLS
+        ============================================ */
+        .tab-content {
             display: none;
         }
-
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            transition: all 0.3s;
-        }
-
-        #menu-toggle:checked ~ .sidebar-overlay,
-        #menu-toggle:checked ~ .sidebar {
+        /* Dynamic CSS Tab logic placeholder helper */
+        .tab-content.active {
             display: block;
         }
 
-        #menu-toggle:checked ~ .sidebar {
-            transform: translateX(0) !important;
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+        ============================================ */
+        @media (max-width: 1023px) {
+            .sidebar { width: 260px; }
+            .main-content { margin-left: 260px; padding: 1.5rem; width: calc(100% - 260px); }
+            .stat-number { font-size: 1.8rem; }
         }
 
-        #menu-toggle:checked ~ .sidebar-overlay {
-            display: block;
+        @media (max-width: 767px) {
+            .sidebar { transform: translateX(-100%); position: fixed; z-index: 1000; width: 280px; }
+            .main-content { margin-left: 0; padding: 1rem; width: 100%; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.875rem; }
+            .stat-card { padding: 1rem 1.2rem; }
+            .stat-number { font-size: 1.5rem; }
+            .top-bar { flex-direction: column; align-items: flex-start; padding: 1rem; }
+            .page-title { font-size: 1.2rem; }
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
         }
 
-        /* Empty State */
-        .empty-row td {
-            text-align: center;
-            padding: 3rem !important;
-            color: #94a3b8;
+        @media (max-width: 575px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .main-content { padding: 0.875rem; }
+            th, td { padding: 0.75rem; font-size: 0.8rem; }
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .tab-container {
-                padding: 1.2rem;
+        /* Dark Mode Scheme Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-light: #0f172a;
+                --white: #1e293b;
+                --dark: #f1f5f9;
+                --gray-dark: #cbd5e1;
+                --gray: #94a3b8;
+                --gray-light: #334155;
             }
-            .stat-number {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                position: fixed;
-                z-index: 1100;
-                width: 280px;
-                height: 100vh;
-                box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
-            }
-            .tab-container {
-                margin-left: 0 !important;
-                width: 100%;
-                padding: 1rem;
-            }
-            .mobile-menu-toggle {
-                display: inline-flex !important;
-            }
-            .top-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1rem;
-            }
-            .page-title h1 {
-                font-size: 1.3rem;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1rem;
-            }
-            .stat-number {
-                font-size: 1.6rem;
-            }
-            .panel-header {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 1rem;
-            }
-            .filter-group {
-                justify-content: flex-start;
-                flex-wrap: wrap;
-            }
-            .data-table {
-                min-width: 800px;
-            }
-            .action-form {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .tab-container {
-                padding: 0.875rem;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            .stat-number {
-                font-size: 1.5rem;
-            }
-            .filter-group select,
-            .filter-group input {
-                width: 100%;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .sidebar {
-                transform: translateX(0) !important;
-                position: fixed;
-            }
-            .mobile-menu-toggle {
-                display: none !important;
-            }
-            .sidebar-overlay {
-                display: none !important;
-            }
-            .tab-container {
-                margin-left: 280px;
-            }
+            body { background: #0f172a; }
+            .top-bar, .stat-card, .table-container, .bulk-actions { border-color: #334155; }
+            th { background: #1e293b; }
         }
     </style>
 </head>
 <body>
 
-<input type="checkbox" id="menu-toggle" style="display: none;">
-<label for="menu-toggle" class="mobile-menu-toggle">
-    <i class="fas fa-bars"></i> Menu
-</label>
-
-
-<div class="dashboard">
-    <-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <h3><i class="fas fa-store"></i> ShopEase</h3>
-            <p>Admin Control Panel</p>
-        </div>
-        <nav class="sidebar-nav">
+    <div class="admin-container">
+         <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-store"></i> ShopEase</h3>
+                <p>Admin Control Panel</p>
+            </div>
+            <nav class="sidebar-nav">
                 <a href="{{url('/admin/inquiry')}}" class="nav-item active">
                     <i class="fas fa-envelope"></i> Inquiries
                 </a>
@@ -583,82 +610,79 @@
                 <a href="{{url('/admin/customer')}}" class="nav-item" id="customer-item">
                     <i class="fas fa-users"></i> Customers
                 </a>
-                <a href="{{url('/admin/vendor')}}" class="nav-item" id="product-item">
+                <a href="{{url('/admin/vendors')}}" class="nav-item" id="product-item">
                     <i class="fas fa-box"></i> Vendors
                 </a>
                 <a href="{{url('/admin/product')}}" class="nav-item" id="product-item">
                     <i class="fas fa-box"></i> Products
                 </a>
-                <a href="#" class="nav-item" id="report-item">
+                <a href="{{'/admin/report'}}" class="nav-item" id="report-item">
                     <i class="fas fa-chart-line"></i> Reports
                 </a>
-        </nav>
-    </aside>
+            </nav>
+        </aside>
 
-    <label for="menu-toggle" class="sidebar-overlay"></label>
-
-    <!-- MAIN CONTENT TAB CONTAINER -->
-    <div class="tab-container">
-        <!-- ==================== CUSTOMERS TAB ==================== -->
-        <div class="tab-content customers">
-            <div class="top-bar">
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            
+            <!-- TOP BAR / HEADER -->
+            <header class="top-bar">
                 <div class="page-title">
-                    <h1><i class="fas fa-users"></i> Customer Management</h1>
-                    <p>View, manage and track all registered customers</p>
+                    <i class="fas fa-users"></i> Customer Management
                 </div>
-                <div class="admin-profile">
-                    <i class="fas fa-bell" style="color: var(--text-muted);"></i>
-                    <span>Admin</span>
-                    <img src="https://ui-avatars.com/api/?background=ff6600&color=fff&name=Admin" alt="admin">
+                <div class="admin-info">
+                    <span class="text-gray" style="font-size: 0.85rem; font-weight: 500;">Welcome, Admin</span>
+                    <button class="admin-avatar">A</button>
                 </div>
-            </div>
+            </header>
 
-            <div class="stats-grid">
-                <div class="stat-card"><h3>Total Customers</h3><div class="stat-number">{{ $totalCustomer ?? '0' }}</div></div>
-                <div class="stat-card"><h3>Active Customers</h3><div class="stat-number">0</div></div>
-                <div class="stat-card"><h3>Lifetime Revenue</h3><div class="stat-number">0 </div></div>
-                <div class="stat-card"><h3>Avg Orders/Cust</h3><div class="stat-number"> 0</div></div>
-            </div>
-
-            <div class="data-panel">
-                <div class="panel-header">
-                    <h3><i class="fas fa-user-friends"></i> Customers Directory</h3>
-                    {{-- <div class="filter-group">
-                        <input type="text" placeholder="Search by name or email..." />
-                        <select>
-                            <option>All Status</option>
-                            <option>Active</option>
-                            <option>Inactive</option>
-                        </select>
-                    </div> --}}
+            <!-- STATISTICS CARDS -->
+            <section class="stats-grid">
+                <div class="stat-card resolved">
+                    <h3>Total Customers</h3>
+                    <div class="stat-number">{{$totalCustomer}}</div>
                 </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
+                <div class="stat-card processing">
+                    <h3>Orders</h3>
+                    <div class="stat-number">{{$orders}}</div>
+                </div>
+                <div class="stat-card pending">
+                    <h3>New This Week</h3>
+                    <div class="stat-number">+{{$newAdd}}</div>
+                </div>
+            </section>
+
+
+            <!-- TAB CONTENT CONTAINER -->
+            <div class="tab-content active">
+                <!-- CUSTOMER TABLE -->
+                <div class="table-container">
+                    <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Customer</th>
+                                <th class="checkbox-col"><input type="checkbox"></th>
+                                <th>Customer ID</th>
+                                <th>Customer Name</th>
                                 <th>Email</th>
-                                <th>Total Spent</th>
-                                <th>Orders</th>
-                                <th>Action</th>
+                                <th>Status</th>
+                                <th>Total Orders</th>
+                                <th style="text-align: right;">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($customer as $cst)
                             <tr>
-                                <td>{{$cst->id}}</td>
-                                <td>{{$cst->first_name}} {{$cst->last_name}}</td>
+                                <td class="checkbox-col"><input type="checkbox"></td>
+                                <td><strong>#C-90{{$cst->id}}</strong></td>
+                                <td>{{$cst->name}}</td>
                                 <td>{{$cst->email}}</td>
-                                <td>{{$cst->orders}}</td>
-                                <td>hello</td>
-                                <td>
-                                    <button>warn</button>
-                                     <form action="{{ url('admin/customer/'.$cst->id) }}" method="POST" class="action-form">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button>Remove</button>
-                                     </form>
+                                <td><span class="badge badge-resolved">Active</span></td>
+                                <td>{{$cst->order}}</td>
+                                <td style="text-align: right;">
+                                    <div class="action-buttons" style="justify-content: flex-end;">
+                                        <button class="btn btn-outline btn-sm"><i class="fas fa-eye"></i>suspend</button>
+                                        <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Remove</button>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -666,8 +690,9 @@
                     </table>
                 </div>
             </div>
-        </div>
-</div>
+
+        </main>
+    </div>
 
 </body>
 </html>
