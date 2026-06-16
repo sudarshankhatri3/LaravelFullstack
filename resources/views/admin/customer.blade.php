@@ -680,8 +680,15 @@
                                 <td>{{$cst->order}}</td>
                                 <td style="text-align: right;">
                                     <div class="action-buttons" style="justify-content: flex-end;">
-                                        <button class="btn btn-outline btn-sm"><i class="fas fa-eye"></i>suspend</button>
-                                        <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Remove</button>
+                                       <form action="{{ url('admin/customer/'.$cst->id) }}" method="POST">
+                                            <button class="btn btn-outline btn-sm"><i class="fas fa-eye"></i>suspend</button>
+                                        </form>
+                                        <form action="{{ url('admin/customer/'.$cst->id) }}" method="POST">
+                                            @method('DELETE')
+                                            <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Remove</button>
+                                        </form>
+                                       
+                                       
                                     </div>
                                 </td>
                             </tr>

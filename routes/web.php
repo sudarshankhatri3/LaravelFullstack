@@ -16,6 +16,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\EsewaController;
 use App\Http\Controllers\AdminControllers;
+use App\Http\Controllers\GeneratePdfController;
 
 Route::get('/', function () {
     return view('common/landingPage');
@@ -82,9 +83,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // manage the vendors
     Route::get('/admin/vendors',[DashboardController::class,'vendors']);
-
-   
-    
+    Route::get('/admin/report',[GeneratePdfController::class,'downloadInvoice']);
 
     // Route::post('/vendor/category',[CategoryController::class,'store']);
 });

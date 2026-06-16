@@ -33,9 +33,9 @@ class DashboardController extends Controller
     public function orderAnalytic(){
         $orders=Order::orderBy('id','DESC')->get();
         $totalOrder     = Order::count();
-        $pendingOrder   = Order::where('status', 'pending')->count();
-        $approvedOrder  = Order::where('status', 'shipped')->count();
-        $deliveredOrder = Order::where('status', 'delivered')->count();
+        $pendingOrder   = Order::where('status','pending')->count();
+        $approvedOrder  = Order::where('status','shipped')->count();
+        $deliveredOrder = Order::where('status','delivered')->count();
         $shippedOrder=Order::where('status','shipped')->count();
         $total_amount = Order::where('status',['approved','shipped','delivered'])->sum('total_amount');
         return view('admin.order', compact('orders','totalOrder','pendingOrder','approvedOrder','deliveredOrder','shippedOrder','total_amount'));
@@ -56,13 +56,24 @@ class DashboardController extends Controller
     }
 
 
-    // dashboard for customer
+    // dashboard for customer and all the customer operation
     public function customerSummary(Request $request){
         $totalCustomer=User::where('role','customer')->count();
         $customer=User::where('role','customer')->get();
         $newAdd=User::where('created_at','>=',Carbon::now()->subDays(7))->count();
         $orders=DB::table('orders')->join('users','users.id','=','orders.user_id')->select('orders.*')->where('users.role','customer')->count();
         return view('admin.customer',compact('totalCustomer','customer','newAdd','orders'));
+    }
+
+    public function removeCustomer($id){
+        $customer = User::where('role', 'customer')->findOrFail($id);
+        $customer->delete();
+        return redirect('/admin/customer')->with('success', 'Customer deleted successfully');
+    }
+
+    public function suspendCustomer(Request $request,$id){
+
+
     }
 
 
@@ -83,5 +94,8 @@ class DashboardController extends Controller
     public function vendor(){
         return view('/admin/vendors');
     }
+
+
+
 
 }

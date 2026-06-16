@@ -506,7 +506,7 @@
                 <a href="{{url('/admin/product')}}" class="nav-item">
                     <i class="fas fa-box"></i> Products
                 </a>
-                <a href="#" class="nav-item">
+                <a href="{{url('/admin/report')}}" class="nav-item">
                     <i class="fas fa-chart-line"></i> Reports
                 </a>
             </nav>

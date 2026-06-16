@@ -1038,7 +1038,7 @@
                 <a href="{{url('/admin/product')}}" class="nav-item" id="product-item">
                     <i class="fas fa-box"></i> Products
                 </a>
-                <a href="{{'/admin/report'}}" class="nav-item" id="report-item">
+                <a href="{{url('/admin/report')}}" class="nav-item" id="report-item">
                     <i class="fas fa-chart-line"></i> Reports
                 </a>
             </nav>

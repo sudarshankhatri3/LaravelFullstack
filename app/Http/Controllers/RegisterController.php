@@ -25,9 +25,10 @@ class RegisterController extends Controller
             'address'=>'required|max:30',
             'email'=>'required|email',
             'password'=>'required',
+            'status'=>'required|in:active,suspended',
             'role'=>'required|in:customer,vendor',
         ]);
-
+        $validated['status'] = 'active';
         $validated['password']=Hash::make($validated['password']);
         User::create($validated);
 
