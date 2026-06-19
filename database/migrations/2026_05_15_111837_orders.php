@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->float('unit_price');
             $table->float('total_amount')->nullable()->default(0);
-            $table->enum('status', ['pending','approved','shipped','delivered'])->default('pending')->change();
+            $table->enum('status', ['pending','approved','shipped','delivered'])->default('pending');
             $table->timestamps();
         });
     }

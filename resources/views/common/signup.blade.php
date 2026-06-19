@@ -457,7 +457,7 @@
         <h3>Create account</h3>
         <p>Fill in your details to get started</p>
       </div>
-      <form id="signupForm" action="/common/signup" method="POST">
+      <form id="signupForm" action="{{route('common.signupPost')}}" method="POST">
         @csrf 
         <div class="double-group">
           <div class="input-group">
@@ -486,7 +486,7 @@
           <select id="role" name="role" required>
             <option value="" disabled selected>Select your role</option>
             <option value="customer">Customer</option>
-            <option value="vendor">Seller / Vendor</option>
+            <option value="vendor">Vendor</option>
           </select>
         </div>
         <div class="checkbox-group">
@@ -523,6 +523,7 @@
 
 <script>
   document.getElementById('signupForm').addEventListener('submit', function(e) { 
+    e.preventDefault();
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -551,6 +552,7 @@
       alert('📧 Please enter a valid email address.');
       return;
     }
+    this.submit();
   });
 </script>
 </body>

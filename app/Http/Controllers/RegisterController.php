@@ -19,14 +19,14 @@ class RegisterController extends Controller
         return view('landingPage');
     }
     public function register(Request $request){
+        // dd($request->all()); 
         $validated=$request->validate([
-            'first_name'=>'required|min:2',
-            'last_name'=>'required|max:40',
-            'address'=>'required|max:30',
+            'first_name'=>'required|min:3',
+            'last_name'=>'required|min:2|max:100',
+            'address'=>'required|max:3000',
             'email'=>'required|email',
             'password'=>'required',
-            'status'=>'required|in:active,suspended',
-            'role'=>'required|in:customer,vendor',
+            'role'=>'required|in:customer,vendor'
         ]);
         $validated['status'] = 'active';
         $validated['password']=Hash::make($validated['password']);
