@@ -681,9 +681,12 @@
                                 <td style="text-align: right;">
                                     <div class="action-buttons" style="justify-content: flex-end;">
                                        <form action="{{ url('admin/customer/'.$cst->id) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
                                             <button class="btn btn-outline btn-sm"><i class="fas fa-eye"></i>suspend</button>
                                         </form>
                                         <form action="{{ url('admin/customer/'.$cst->id) }}" method="POST">
+                                            @csrf
                                             @method('DELETE')
                                             <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Remove</button>
                                         </form>

@@ -1047,7 +1047,7 @@
         <!-- Main Content -->
         <main class="main-content" id="main-content">
             <div class="top-bar">
-                <h1 class="page-title"><i class="fas fa-envelope"></i> Customer Inquiries</h1>
+                <h1 class="page-title"><i class="fas fa-envelope"></i>Product Management</h1>
                 <div class="admin-info">
                     <span><i class="fas fa-user-circle"></i> Admin User</span>
                     <form method="POST" action="{{url('/vendor/logOut')}}">
@@ -1115,8 +1115,12 @@
                             <td><img src="{{$prod->image ?? 'https://placehold.co/50x50'}}" alt="product" loading="lazy"></td>
                             <td>
                                 <div class="action-buttons">
-                                    <button class="btn btn-sm btn-outline" onclick="viewProduct({{$prod->id}})"><i class="fas fa-eye"></i> View</button>
-                                    <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</button>
+                                    <form action="">
+                                        <button class="btn btn-sm btn-outline" onclick="viewProduct({{$prod->id}})"><i class="fas fa-eye"></i> View</button>
+                                    </form>
+                                    <form action="">
+                                        <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Remove</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

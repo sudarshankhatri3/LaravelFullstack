@@ -65,16 +65,20 @@ class DashboardController extends Controller
         return view('admin.customer',compact('totalCustomer','customer','newAdd','orders'));
     }
 
+
+    // suspend customer
+    public function suspendCustomer($id){
+        $suspendedCustomer=User::where('role','customer')->findOrFail($id);
+        $suspendedCustomer->update(['status'=>'suspended']);
+        return view('admin.customers')->with('success', 'Customer suspended successfully.');
+    }
+
     public function removeCustomer($id){
         $customer = User::where('role', 'customer')->findOrFail($id);
         $customer->delete();
         return redirect('/admin/customer')->with('success', 'Customer deleted successfully');
     }
 
-    public function suspendCustomer(Request $request,$id){
-
-
-    }
 
 
     // dashboard product
@@ -89,11 +93,22 @@ class DashboardController extends Controller
         return view('/admin/product',compact('totalProduct','inStock','comingStock','lowStock','outOfStock','product'));
     }
 
+    // remove product
+    public function removeProd($id){
+        $prod=Product::findOrFail($id);
+        $prod->delete();
+        return view('/admin/product');
+    }
+
 
     //  dashboard vendors
     public function vendor(){
-        return view('/admin/vendors');
+        $details=User::where('role','vendor')->count();
+        return view('admin.vendors',compact('details'));
     }
+
+
+    
 
 
 

@@ -67,7 +67,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // manage the order
     Route::get('/admin/orders',[DashboardController::class,'orderAnalytic']);
     Route::patch('/admin/orders/{id}/status', [DashboardController::class, 'changeStatus']);
+
+    // manage the customers in admin panel
     Route::get('/admin/customer',[DashboardController::class,'customerSummary']);
+    Route::patch('/admin/customer/{id}',[DashboardController::class,'suspendCustomer']);
     Route::delete('/admin/customer/{id}',[RegisterController::class,'remove']);
 
     // manage the inquiry
@@ -76,13 +79,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::patch('/admin/dashboard/{id}',[InquiryController::class,'resolved']);
 
     // manage the product 
-    Route::get('admin/product',[DashboardController::class,'product']);
+    Route::get('/admin/product',[DashboardController::class,'product']);
+    Route::delete('/admin/product/{id}', [DashboardController::class, 'removeProd']);
     
     // manage the inquiry
     Route::get('/admin/inquiry',[InquiryController::class,'index']);
 
     // manage the vendors
-    Route::get('/admin/vendors',[DashboardController::class,'vendors']);
+    Route::get('/admin/vendors',[DashboardController::class,'vendor']);
     Route::get('/admin/report',[GeneratePdfController::class,'downloadInvoice']);
 
     // Route::post('/vendor/category',[CategoryController::class,'store']);

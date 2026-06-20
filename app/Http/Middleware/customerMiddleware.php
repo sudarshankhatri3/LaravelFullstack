@@ -19,6 +19,9 @@ class customerMiddleware
         if(!Auth::check()||Auth::user()->role!=='customer'){
             abort(403);
         }
+        if (Auth::user()->status === 'suspended'){
+            abort(403, 'Your account has been suspended.');
+        }
         return $next($request);
     }
 }
